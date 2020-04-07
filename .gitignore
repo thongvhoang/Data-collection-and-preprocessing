@@ -125,6 +125,8 @@ Data_visualization-covid19/
 #png
 *.png
 
+#odt
+*.odt
 #txt
 *.txt
 
