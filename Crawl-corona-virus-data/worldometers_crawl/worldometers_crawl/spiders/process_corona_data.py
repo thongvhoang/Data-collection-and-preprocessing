@@ -12,11 +12,12 @@ class process_data:
         return Date#self.string_data[Date_start:Date_end]
     
     def getNumberData(self):
-        NumberData_index_start = self.string_data.find('data: [')+7
-        NumberData_index_rstart = self.string_data.rfind('data: [')+7
-        if (NumberData_index_start==NumberData_index_rstart or self.string_data.find('Total Cases')>0):
-            NumberData_index_end = self.string_data.find('responsive')-23
-        else:
-            NumberData_index_end = self.string_data.rfind('color')-65
-        NumberData = self.string_data[NumberData_index_start:NumberData_index_end].split(',')                
+        NumberData_index_start = self.string_data.find('data: [')
+        NumberData_index_end = self.string_data.find('responsive')
+        
+        String = self.string_data[NumberData_index_start:NumberData_index_end]
+        NumberData_index_start = String.find('[')+1
+        NumberData_index_end = String.find(']')
+        
+        NumberData =  String[NumberData_index_start:NumberData_index_end].split(',')
         return NumberData
